@@ -1,40 +1,41 @@
 #include <iostream>
+#include <string>
 
-class MeuInteiro {
+class MinhaClasse {
 private:
-    int valor; // Atributo privado
+    std::string texto;
 
 public:
-    // Construtor padrão
-    MeuInteiro() {
-        this->valor = 0; // Inicializa o valor com 0
+    // Construtor padrão com parâmetro default
+    MinhaClasse(std::string texto = "Unicamp") : texto(texto) {}
+
+    // Getter para o texto
+    std::string getTexto() const {
+        return this->texto;
     }
 
-    // Construtor parametrizado
-    MeuInteiro(int valor) {
-        this->valor = valor; // Inicializa o valor com o argumento fornecido
-    }
-
-    // Método setter para definir o valor
-    void setValor(int valor) {
-        this->valor = valor; // O uso de 'this' diferencia o atributo do parâmetro
-    }
-
-    // Método getter para obter o valor
-    int getValor() const {
-        return this->valor; // Retorna o valor do atributo
+    // Setter para o texto
+    void setTexto(const std::string& texto) {
+        this->texto = texto;
     }
 };
 
 int main() {
-    MeuInteiro objeto1; // Cria um objeto com o construtor padrão
-    MeuInteiro objeto2(10); // Cria um objeto com o construtor parametrizado
+    // Criação dinâmica de um objeto com o valor default
+    MinhaClasse* obj1 = new MinhaClasse();
+    std::cout << "Texto em obj1: " << obj1->getTexto() << std::endl;
 
-    std::cout << "Valor do objeto1: " << objeto1.getValor() << std::endl; // Deve ser 0
-    std::cout << "Valor do objeto2: " << objeto2.getValor() << std::endl; // Deve ser 10
+    // Criação dinâmica de um objeto com valor definido
+    MinhaClasse* obj2 = new MinhaClasse("Outro texto");
+    std::cout << "Texto em obj2: " << obj2->getTexto() << std::endl;
 
-    objeto1.setValor(5); // Define o valor de objeto1 usando o setter
-    std::cout << "Novo valor do objeto1: " << objeto1.getValor() << std::endl; // Deve ser 5
+    // Modificação do texto em obj1
+    obj1->setTexto("Novo texto");
+    std::cout << "Texto modificado em obj1: " << obj1->getTexto() << std::endl;
+
+    // Liberação da memória alocada para os objetos
+    delete obj1;
+    delete obj2;
 
     return 0;
 }
