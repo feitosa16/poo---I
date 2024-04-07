@@ -10,14 +10,14 @@ public:
         this->numero = numero;
     }
 
-    // Setter
+    // Setter para o número
     void setNumero(int numero) {
         this->numero = numero;
     }
 
-    // Getter
+    // Getter para o número
     int getNumero() const {
-        return numero;
+        return this->numero;
     }
 
     // Método para imprimir a tabuada de adição
@@ -44,34 +44,31 @@ public:
     // Método para imprimir a tabuada de divisão
     void divisao() const {
         if (numero == 0) {
-            std::cout << "Erro: Divisão por zero." << std::endl;
+            std::cout << "Erro: Divisão por zero não é possível." << std::endl;
             return;
         }
         for (int i = 1; i <= 10; ++i) {
-            std::cout << numero << " / " << i << " = " << numero / (double)i << std::endl;
+            std::cout << numero << " / " << i << " = " << numero / static_cast<double>(i) << std::endl;
         }
     }
 };
 
 int main() {
-    Tabuada1 *objeto = new Tabuada1(5); // Alocação dinâmica do objeto
+    Tabuada1 *tabuada = new Tabuada1(6); // Aloca dinamicamente um objeto com o número 5
 
-    objeto->adicao(); // Exibe a tabuada de adição
-    std::cout << std::endl;
-    
-    objeto->subtracao(); // Exibe a tabuada de subtração
-    std::cout << std::endl;
+    std::cout << "Tabuada de adição:" << std::endl;
+    tabuada->adicao(); // Imprime a tabuada de adição
 
-    objeto->multiplicacao(); // Exibe a tabuada de multiplicação
-    std::cout << std::endl;
+    std::cout << "Tabuada de subtração:" << std::endl;
+    tabuada->subtracao(); // Imprime a tabuada de subtração
 
-    objeto->divisao(); // Exibe a tabuada de divisão
-    std::cout << std::endl;
+    std::cout << "Tabuada de multiplicação:" << std::endl;
+    tabuada->multiplicacao(); // Imprime a tabuada de multiplicação
 
-    objeto->setNumero(0); // Testa a mensagem de erro para divisão por zero
-    objeto->divisao(); // Tentativa de exibir a tabuada de divisão
+    std::cout << "Tabuada de divisão:" << std::endl;
+    tabuada->divisao(); // Imprime a tabuada de divisão
 
-    delete objeto; // Libera a memória alocada para o objeto
+    delete tabuada; // Libera a memória alocada para o objeto
 
     return 0;
 }
