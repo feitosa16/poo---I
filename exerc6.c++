@@ -1,12 +1,12 @@
 #include <iostream>
 
-class tabuada1 {
+class Tabuada1 {
 private:
     int numero;
 
 public:
     // Construtor parametrizado
-    tabuada1(int numero) {
+    Tabuada1(int numero) {
         this->numero = numero;
     }
 
@@ -54,7 +54,7 @@ public:
 };
 
 int main() {
-    tabuada1 *tabuada = new tabuada1(6); // Aloca dinamicamente um objeto com o número 5
+    Tabuada1 *tabuada = new Tabuada1(6); // Aloca dinamicamente um objeto com o número 5
 
     std::cout << "Tabuada de adição:" << std::endl;
     tabuada->adicao(); // Imprime a tabuada de adição
