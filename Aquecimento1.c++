@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <istream>
 
 
 
@@ -27,7 +28,7 @@ private:
 
 void display() const{
     if (temTitulo){
-        std::cout<<"===="<< titulo << "====" << std::endl; 
+        std::cout<<"==== "<< titulo << " ====" << std::endl; 
     }
     for (int i = 0; i < opcoes.size(); i++){
         std::cout <<(i+1)<< ". " << opcoes[i]<< std::endl;
@@ -39,21 +40,22 @@ void display() const{
 }
     int getEscolha() const{
         int escolha = 0;
-        std::cout << "Digite sua escolha"; 
+        std::cout << "Digite sua escolha: "; 
         while(!(std::cin>>escolha) || escolha < 1 || escolha > opcoes.size()){
-            std::cout << "Esscolha inválida. Por favor, tente novamente"; 
+            std::cout << "Escolha inválida. Por favor, tente novamente"; 
             std:: cin.clear(); 
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),"\n");
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         return escolha;     
         
     }
 
 };
+
 int main(){
-    Menu menu("Men Principal");
+    Menu menu("Menu Principal");
     menu.adicionaOpcao("OpçÃO 1: Faça algo"); 
-    menu.adicionaOpcao("Opção 2: Façça outra coisa ");
+    menu.adicionaOpcao("Opção 2: Faça outra coisa ");
     menu.adicionaOpcao("Opção 3: Saída");
 
 
